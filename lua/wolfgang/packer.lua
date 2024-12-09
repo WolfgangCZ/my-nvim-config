@@ -6,14 +6,25 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
-
-
+    use "AbdelrahmanDwedar/awesome-nvim-colorschemes"
+    use {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+        require("nvim-autopairs").setup {}
+    end
+    }
 	use 
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.5',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+    use 
+    {
+      'nvim-tree/nvim-tree.lua',
+      requires = {'nvim-tree/nvim-web-devicons'},
+    }
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
 	use('ThePrimeagen/harpoon')
@@ -37,3 +48,4 @@ return require('packer').startup(function(use)
 		}
 	}	
 end)
+
